@@ -1,0 +1,113 @@
+aspect_id,text,span,label,ordinal,dataset
+12,Overall: 1/10,Overall,very negative,0,train
+12,Overall: 1 out of 5,Overall,very negative,0,train
+12,Overall: 2/10.,Overall,very negative,0,eval
+12,Overall: 2/5,Overall,negative,0,train
+12,Overall: 3 out of 10.,Overall,negative,0,train
+12,Overall: 3/10,Overall,negative,0,eval
+12,Overall: 3/5.,Overall,neutral,0,train
+12,Overall: 4 out of 10,Overall,negative,0,train
+12,Overall: 4.5/5,Overall,positive,0,train
+12,Overall: 4/10,Overall,negative,0,train
+12,Overall: 5/10.,Overall,neutral,0,train
+12,Overall: 5/5!,Overall,very positive,0,eval
+12,Overall: 6/10.,Overall,neutral,0,train
+12,Overall: 7+/10.,Overall,positive,0,train
+12,Overall: 7.5/10,Overall,positive,0,eval
+12,Overall: 7/10.,Overall,positive,0,train
+12,Overall: 8.5/10.,Overall,positive,0,train
+12,Overall: 8/10,Overall,positive,0,train
+12,Overall: 9/10!,Overall,very positive,0,train
+12,Overall: 9 out of 10,Overall,very positive,0,eval
+12,Overall: 10/10,Overall,very positive,0,train
+12,Overall: 10 out of 10.,Overall,very positive,0,train
+12,Overall: 11/10.,Overall,very positive,0,train
+12,Overall: 1/10,Overall,very negative,0,train
+12,Overall: 1 out of 5.,Overall,very negative,0,eval
+12,Overall: 2/10,Overall,very negative,0,train
+12,Overall: 2/5.,Overall,negative,0,train
+12,Overall: 3 out of 10,Overall,negative,0,train
+12,Overall: 3/10,Overall,negative,0,train
+12,Overall: 3/5,Overall,neutral,0,train
+12,Overall: 4 out of 10.,Overall,negative,0,train
+12,Overall: 4/5,Overall,positive,0,train
+12,Overall: 4/10.,Overall,negative,0,eval
+12,Overall: 5/10,Overall,neutral,0,train
+12,Overall: 5/5,Overall,very positive,0,train
+12,Overall: 6+/10.,Overall,neutral,0,eval
+12,Overall: 7/10.,Overall,positive,0,train
+12,Overall: 8/10.,Overall,positive,0,eval
+12,Overall: 9.2/10,Overall,very positive,0,train
+12,Overall: 9 out of 10,Overall,very positive,0,train
+12,Overall: 10/10.,Overall,very positive,0,eval
+12,Overall: 10 out of 10,Overall,very positive,0,train
+12,Overall: 12/10!,Overall,very positive,0,train
+12,Overall: 0/10.,Overall,very negative,0,train
+12,Overall: 0 out of 5,Overall,very negative,0,train
+12,Overall: 2 out of 10,Overall,very negative,0,train
+12,Overall: 2.5/5,Overall,negative,0,train
+12,Overall: 3.5 out of 10,Overall,negative,0,train
+12,Overall: 3/10.,Overall,negative,0,train
+12,Overall: 3/5,Overall,neutral,0,train
+12,Overall: 4/10.,Overall,negative,0,train
+12,Overall: 4 out of 5,Overall,positive,0,train
+12,Overall: 5.5/10,Overall,neutral,0,train
+12,Overall: 5/5,Overall,very positive,0,train
+12,Overall: 6.7/10,Overall,neutral,0,train
+12,Overall: 7.0/10.0,Overall,positive,0,train
+12,Overall: 7/10.,Overall,positive,0,train
+12,Overall: 8.2/10,Overall,positive,0,eval
+12,Overall: 8 out of 10!,Overall,positive,0,train
+12,Overall: 9.8/10.,Overall,very positive,0,train
+12,Overall: */****,Overall,very negative,0,eval
+12,Overall: * out of ****,Overall,very negative,0,train
+12,Overall: **/****.,Overall,negative,0,train
+12,Overall: ** out of ****,Overall,negative,0,train
+12,Overall: ***/****,Overall,positive,0,train
+12,Overall: *** out of ****.,Overall,positive,0,eval
+12,Overall: ****/****,Overall,very positive,0,train
+12,Overall: **** out of ****,Overall,very positive,0,train
+12,Overall: */****.,Overall,very negative,0,train
+12,Overall: * out of ****.,Overall,very negative,0,train
+12,Overall: **/****,Overall,negative,0,eval
+12,Overall: ** out of ****,Overall,negative,0,train
+12,Overall: ***/****,Overall,positive,0,train
+12,Overall: *** out of ****,Overall,positive,0,train
+12,Overall: ****/****!,Overall,very positive,0,eval
+12,Overall: **** out of ****.,Overall,very positive,0,train
+12,Another person's Grade: A,Another person's Grade,very positive,0,train
+12,Grade: A+,Grade,very positive,0,train
+12,GRADE: A-,GRADE,very positive,0,train
+12,Grade: A.,Grade,very positive,0,eval
+12,Grade: B,Grade,positive,0,train
+12,GRADE: B website.,GRADE,positive,0,train
+12,GRADE: B+.,GRADE,positive,0,eval
+12,Overall Grade: B-,Grade,positive,0,train
+12,GRADE: B-.,GRADE,positive,0,train
+12,Grade: B.,Grade,positive,0,train
+12,GRADE: C,GRADE,negative,0,eval
+12,Final Grade: C,Grade,negative,0,train
+12,My Grade: C-.,Grade,negative,0,train
+12,Grade: C+,Grade,negative,0,train
+12,GRADE: C+/B-,GRADE,negative,0,train
+12,GRADE: D+,GRADE,very negative,0,train
+12,Grade: D-,Grade,very negative,0,eval
+12,Letter Grade: D.,Letter Grade,very negative,0,train
+12,Grade: A,Grade,very positive,0,train
+12,Final Grade: A+.,Grade,very positive,0,eval
+12,Grade: A-,Grade,very positive,0,train
+12,GRADE: A,GRADE,very positive,0,train
+12,Another person's Grade: B,Another person's Grade,positive,0,train
+12,GRADE: B website.,GRADE,positive,0,train
+12,Grade: B+/A- website.,Grade,positive,0,train
+12,GRADE: B+,GRADE,positive,0,train
+12,Overall Grade: B-,Grade,positive,0,eval
+12,GRADE: B-.,GRADE,positive,0,train
+12,My Grade: B,Grade,positive,0,train
+12,GRADE: C.,GRADE,negative,0,train
+12,Grade: C,Grade,negative,0,train
+12,Grade: C-.,Grade,negative,0,train
+12,Letter Grade: C+,Letter Grade,negative,0,eval
+12,GRADE: D+,GRADE,very negative,0,train
+12,Grade: D-.,Grade,very negative,0,train
+12,Grade: D,Grade,very negative,0,eval

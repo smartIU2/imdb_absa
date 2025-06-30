@@ -1,0 +1,64 @@
+{
+  "database": "./database/imdb.db",
+  
+  "import_chunk_size": 5000000,
+  
+  "import_titles": "./import/imdb/title.basics.tsv",
+  "import_names": "./import/imdb/name.basics.tsv",
+  "import_principals": "./import/imdb/title.principals.tsv",
+  "import_ratings": "./import/imdb/title.ratings.tsv",
+  
+  "import_ambiguous": "./import/ambiguous_names.csv",
+  "import_aspects": "./import/aspects/aspects.csv",
+  "import_franchises": "./import/franchise/franchises.csv",
+  
+  "imdb_types": ["movie"],
+  "imdb_incl_adult": 0,
+  "imdb_year_min": 2000,
+  "imdb_runtime_min": 45,
+  "imdb_votes_min": 50,
+  
+  "pre_normal": "NFKC",
+  "pre_coref_resolution": true,
+ 
+  "export_sentences": "./doccano/sentences.json",
+  "import_annotations": "./doccano/annotations.jsonl",
+ 
+  "model_spacy": "en_core_web_trf",
+  "model_spacy_exclude": ["lemmatizer"],
+  "model_maverick": "sapienzanlp/maverick-mes-ontonotes",
+  "model_setfit": "./models/setfit-imdb-absa-action",
+  "model_classifier":"./models/classifier-imdb-absa-action",
+  
+  "dash_highlight_with_context": false,
+  "dash_highlight_categories": ["Audio", "Action", "Effects", "Scene", "Story", "Direction", "Cast", "Message", "Emotion", "General", "Overall"],
+  
+  "train_ratings": "./import/aspects/ratings.csv",
+  
+  "train_models":{
+	  "action":{
+		  "model_base":"sentence-transformers/all-distilroberta-v1",
+		  "save_as":"./models/setfit-imdb-absa-action",
+		  "genre_id":1,
+		  "use_amp":true,
+		  "epochs_embedding":1,
+		  "epochs_classifier":3,
+		  "sampling_strategy":"unique",
+		  "batch_size":64,
+		  "steps":1024,
+		  "early_stopping_patience":0
+	  },
+	  "test":{
+		  "model_base":"sentence-transformers/all-MiniLM-L6-v2",
+		  "save_as":"./models/setfit-imdb-absa-test",
+		  "genre_id":1,
+		  "use_amp":true,
+		  "epochs_embedding":1,
+		  "epochs_classifier":1,
+		  "sampling_strategy":"oversampling",
+		  "batch_size":128,
+		  "steps":512,
+		  "early_stopping_patience":8
+	  }
+  }
+}

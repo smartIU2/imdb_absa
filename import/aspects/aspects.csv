@@ -1,0 +1,300 @@
+﻿aspect_id,POS,term
+1,n,audio
+1,n,audio score
+1,n,background score
+1,n,composer
+1,n,music
+1,n,music score
+1,n,musical score
+1,n,orchestral work
+1,n,speech
+1,n,song
+1,n,songs
+1,n,sound
+1,n,sound design
+1,n,sound editing
+1,n,sound track
+1,n,sounds
+1,n,soundtrack
+1,n,soundtracks
+1,n,track
+1,n,voice
+1,n,voice acting
+2,n,3d elements
+2,n,3d stuff
+2,n,animation
+2,n,cg
+2,n,cgi
+2,n,computer graphics
+2,n,computer-generated
+2,n,digital
+2,n,effects
+2,n,imagery
+2,n,graphics
+2,n,special effect
+2,n,special effects
+2,n,vfx
+2,n,vfx graphics
+3,n,visual
+3,n,visual effects
+2,n,visuals
+2,a,visually
+3,n,act
+3,n,atmosphere
+3,n,camera
+3,n,camera angles
+3,n,camera shots
+3,n,camera work
+3,n,cams
+3,n,cinematic techniques
+3,n,cinematographer
+3,n,cinematography
+3,n,composition
+3,n,costume
+3,n,costume design
+3,n,costuming
+3,n,creativity
+3,v,filmed
+3,n,lighting
+3,n,locations
+3,n,makeup
+3,n,makeup artists
+3,n,moments
+3,n,mood
+3,n,photography
+3,n,picture
+3,n,practical effects
+3,n,production design
+3,n,production quality
+3,n,props
+3,n,scenario
+3,n,scene
+3,n,scenery
+3,n,scenes
+3,n,screenplay
+3,n,set
+3,n,set pieces
+3,n,sets
+3,n,setting
+3,n,settings
+3,n,shot
+3,n,shots
+3,n,spectacle
+3,n,style
+3,n,tone
+3,n,worldbuilding
+4,n,climax
+4,n,cliché
+4,n,concept
+4,n,conversation
+4,n,conversations
+4,n,depth
+4,n,dialog
+4,n,dialogs
+4,n,dialogue
+4,n,dialogues
+4,n,end
+4,n,ending
+4,n,explanation
+4,n,exposition
+4,n,idea
+4,n,implausibilities
+4,n,lines
+4,n,logic
+4,n,motif
+4,n,motives
+4,n,narrative
+4,n,nonsense
+4,n,one-liners
+4,n,plot
+4,n,plot lines
+4,n,reason
+4,n,script
+4,n,sense
+4,n,speeches
+4,n,stakes
+4,n,stories
+4,n,story
+4,n,story line
+4,n,storyteller
+4,n,storytelling
+4,n,structure
+4,n,substance
+4,n,surprise
+4,n,surprises
+4,n,suspense
+4,n,tale
+4,n,talk
+4,n,talking
+4,n,timing
+4,n,twist
+4,n,twists
+4,n,writer
+4,n,writers
+4,n,writing
+4,v,written
+5,n,choreography
+5,n,craftsmanship
+5,n,cutting
+5,v,directed
+5,n,directing
+5,n,direction
+5,n,director
+5,n,directors
+5,v,edited
+5,n,editing
+5,n,editor
+5,n,execution
+5,n,filming
+5,n,filming techniques
+5,n,filmmaker
+5,n,filmmaking
+5,n,pace
+5,n,pacing
+5,n,producer
+5,n,production
+5,n,realism
+5,n,sequence
+5,n,studio
+6,n,acting
+6,n,actor
+6,n,actors
+6,n,actress
+6,n,antagonist
+6,n,cameos
+6,n,cast
+6,n,casting
+6,n,character
+6,n,character development
+6,n,characterization
+6,n,characters
+6,n,charisma
+6,n,charm
+6,n,chemistry
+6,n,crew
+6,n,dynamic
+6,n,expressions
+6,n,hero
+6,n,main lead
+6,n,performance
+6,n,performances
+6,n,personality
+6,n,portrayal
+6,n,portraying
+6,n,protagonist
+6,n,relationship
+6,n,role
+6,n,tension
+6,n,actor
+6,n,actress
+6,n,villain
+6,n,villains
+7,n,content
+7,n,correctness
+7,n,discussion
+7,n,discussions
+7,n,lesson
+7,n,matter
+7,n,meaning
+7,n,message
+7,n,moral
+7,n,premise
+7,n,reflection
+7,n,sake
+7,n,subject
+7,n,subject matter
+7,n,theme
+7,n,themes
+7,n,truth
+8,n,action
+8,n,action scene
+8,n,action sequence
+8,n,adventure
+8,n,battle
+8,n,blood
+8,n,combat
+8,n,explosion
+8,n,fight
+8,n,fight scene
+8,n,fighting
+8,n,fighting scene
+8,n,fights
+8,n,gore
+8,n,gun battle
+8,n,pursuits
+8,n,stunt
+8,n,stunt choreography
+8,n,stunts
+8,n,violence
+9,n,audience
+9,n,drama
+9,n,emotion
+9,n,emotional backbone
+9,n,emotional depth
+9,n,emotional moments
+9,n,emotional scenes
+9,n,emotional weight
+9,a,emotionally
+9,n,emotions
+9,n,entertainment
+9,n,excitement
+9,n,experience
+9,n,experiences
+9,n,feel
+9,n,feeling
+9,n,heart
+9,n,humor
+9,n,joke
+9,n,puns
+9,n,soul
+9,n,thrill
+10,n,adaption
+10,n,adaptation
+10,n,adaptations
+10,n,another feature
+10,n,another person
+10,n,comic book
+10,n,comics
+10,n,comparison
+10,n,films
+10,n,flicks
+10,n,franchise
+10,n,movies
+10,n,other features
+10,n,other persons
+10,n,prequels
+10,n,saga
+10,n,sequels
+10,n,series
+10,n,trilogy
+10,n,versions
+11,n,achievement
+11,n,blockbuster
+11,n,conclusion
+11,n,disappointment
+11,n,entry
+11,n,film
+11,n,flick
+11,n,garbage
+11,n,installment
+11,n,junk
+11,n,masterpiece
+11,n,mess
+11,n,movie
+11,n,remake
+11,n,rubbish
+11,n,sequel
+11,n,version
+12,n,grade
+12,n,overall
+13,n,everyone
+13,n,fans
+13,n,idiots
+13,n,marketing
+13,n,media
+13,n,people
+13,n,pretenders
+13,n,ratings
+13,n,supporters
+13,n,teenagers
+13,n,viewers
