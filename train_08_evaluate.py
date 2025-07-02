@@ -17,6 +17,7 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument('--review_id', type=int, help='filter by review')
     parser.add_argument('--genre_id', type=int, help='filter by genre')
+    parser.add_argument('--usage', type=str, help='filter by custom usage tag')
     parser.add_argument('--ratings', metavar='N', type=int, nargs='+', help='filter by ratings')
     filters = parser.parse_args()
 

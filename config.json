@@ -11,7 +11,9 @@
   "import_ambiguous": "./import/ambiguous_names.csv",
   "import_aspects": "./import/aspects/aspects.csv",
   "import_franchises": "./import/franchise/franchises.csv",
-  
+ 
+  "import_aclImdb": "./import/aclImdb",
+   
   "imdb_types": ["movie"],
   "imdb_incl_adult": 0,
   "imdb_year_min": 2000,

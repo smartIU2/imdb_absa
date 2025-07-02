@@ -20,6 +20,8 @@ class Config:
                self.import_ambiguous = conf['import_ambiguous']
                self.import_aspects = conf['import_aspects']
                self.import_franchises = conf['import_franchises']
+               
+               self.import_aclImdb = conf['import_aclImdb']
 
                self.imdb_types = conf['imdb_types']
                self.imdb_incl_adult = conf['imdb_incl_adult']

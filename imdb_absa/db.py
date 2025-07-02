@@ -557,9 +557,15 @@ class DB:
         with closing(self.connection()) as conn:
             with closing(conn.cursor()) as cmd:            
 
-                cmd.execute(f'''INSERT OR IGNORE INTO review(originalText, title_id, rating)
-                               SELECT {col_text}, title_id, rating
+                count = cmd.execute(f'''SELECT COUNT(*)
+                                        FROM import_reviews
+                                        WHERE EXISTS (SELECT id FROM imdb_title WHERE imdb_title.id = import_reviews.title_id)
+                                    ''').fetchone()[0]
+
+                cmd.execute(f'''INSERT OR IGNORE INTO review(originalText, title_id, rating, usage)
+                               SELECT {col_text}, title_id, rating, usage
                                FROM import_reviews
+                               WHERE EXISTS (SELECT id FROM imdb_title WHERE imdb_title.id = import_reviews.title_id)
                             ''')
                 
                 cmd.execute('''UPDATE review
@@ -575,6 +581,8 @@ class DB:
                 cmd.execute('''DROP TABLE import_reviews''')
                 
                 conn.commit()
+                
+        return count
 
     def update_reviews(self, reviews):
         """ update reviews with normalized text
@@ -1120,13 +1128,14 @@ class DB:
                 
                 conn.commit()    
     
-    def get_review_polarities_sparse(self, review_id = None, genre_id = None, ratings = None):
+    def get_review_polarities_sparse(self, review_id = None, genre_id = None, usage = None, ratings = None):
         """ get review polarities from analyzed sentences
             with separate discrete valued columns for each aspect category / polarity combination
             
         Filter:
             review_id: int - get polarities for a specific review
             genre_id: int - get polarities for all reviews pertaining to a movie of the given genre
+            usage: str - get polarities for tagged reviews, e.g., 'train' or 'test'
             ratings: List[int] - get polarities for reviews with one of the given ratings only
         """
         
@@ -1171,6 +1180,7 @@ class DB:
         # filter
         review_filter = '' if review_id is None else f'AND r.id = {review_id}'
         genre_filter = '' if genre_id is None else f'AND r.genre_flag & (1 << {genre_id}) != 0'
+        usage_filter = '' if usage is None else f"AND r.usage = '{usage}'"
         
         ratings_filter = ''
         if ratings is not None:
@@ -1200,6 +1210,7 @@ class DB:
                   WHERE s.analyzed = 1
                   {review_filter}
                   {genre_filter}
+                  {usage_filter}
                   {ratings_filter}
                   GROUP BY r.id, r.rating
                 """

@@ -6,7 +6,7 @@ from imdb_absa.db import DB
 
 if __name__ == "__main__":
     """ Read in reviews from csv
-       there's no check for identical reviews, so make sure to only import once
+        there's no check for identical reviews, so make sure to only import once
     """
 
     if len(sys.argv) < 2:
@@ -27,7 +27,15 @@ if __name__ == "__main__":
             print(f"{csv} does not contain the required columns 'title_id', 'text' and 'rating'")
             
         else:
-
-            db.import_reviews(reviews)
             
-            print(f'Imported {len(reviews)} reviews.')
+            if not 'usage' in reviews.columns:
+                reviews['usage'] = ''
+
+            count_total = len(reviews)
+
+            count_imported = db.import_reviews(reviews)
+            
+            print(f'Imported {count_imported} of {count_total} reviews.')
+            
+            if count_imported < count_total:
+                print('Reviews for movies not in the database were discarded.')
