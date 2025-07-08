@@ -304,7 +304,33 @@ train_08_evaluate.py --usage test
 IMPORTANT: Be aware, that you can only evaluate reviews for movies contained in the database.
 So, for this example, you would have to first relax/remove the filters on the imdb titles, before calling setup_01_create_database.py
 
+## FAQ
 
-### Disclaimer
+To find the appropriate genre_id for your settings / model training, consult the following table:
+
+|genre_id|displayName|
+|---|---|
+|1| Action |
+|2| Adventure |
+|3| Animation |
+|4| Biography |
+|5| Comedy |
+|6| Crime |
+|7| Documentary |
+|8| Drama |
+|9| Family |
+|10| Fantasy |
+|11| History |
+|12| Horror |
+|13| Musical |
+|14| Mystery |
+|15| Romance |
+|16| Sci-Fi |
+|17| Sport |
+|18| Thriller |
+|19| War |
+|20| Western |
+
+## Disclaimer
 
 **No** part of the source code in this repository or this documentation was created by or with the help of artificial intelligence.
