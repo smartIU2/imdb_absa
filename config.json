@@ -29,7 +29,7 @@
   "model_spacy": "en_core_web_trf",
   "model_spacy_exclude": ["lemmatizer"],
   "model_maverick": "sapienzanlp/maverick-mes-ontonotes",
-  "model_setfit": "./models/setfit-imdb-absa-action",
+  "model_setfit": "smartIU2/setfit-imdb-absa-action-v1.0",
   "model_classifier":"./models/classifier-imdb-absa-action",
   
   "dash_genre_filter": 1,
