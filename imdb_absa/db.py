@@ -339,14 +339,16 @@ class DB:
                                      FROM imdb_title
                                  ''', self.connection())
                                  
-    def get_titles_by_genre(self, genre_id):
-        """ get imdb titles by genre """
+    def get_titles_for_selection(self, genre_id = None):
+        """ get imdb titles for selection, optionally filtered by genre """
     
-        return pd.read_sql_query(f'''SELECT t.id, t.primaryTitle || ' (' || t.startYear || ')' as title
+        genre_filter = '' if genre_id is None or genre_id < 1 else f"WHERE g.genre_id = '{genre_id}'"
+    
+        return pd.read_sql_query(f'''SELECT DISTINCT t.id, t.primaryTitle || ' (' || t.startYear || ')' as title
                                      FROM imdb_title t
                                      INNER JOIN imdb_title_genres g
                                      ON g.title_id = t.id
-                                     WHERE g.genre_id = '{genre_id}'
+                                     {genre_filter}
                                      ORDER BY t.primaryTitle || ' (' || t.startYear || ')'
                                  ''', self.connection())
                                   
@@ -872,10 +874,16 @@ class DB:
         
         return metadata
 
-    def get_sample_sentences(self, genre_id):
+    def get_sample_sentences(self, aspect_limit = None, genre_id = None):
         """ get samples of sentences for annotation
+            optionally filtered by genre_id
           , a more or less even mix of sentences covering all aspect categories is chosen
         """
+        
+        if aspect_limit is None:
+            aspect_limit = 42
+            
+        genre_filter = '' if genre_id is None or genre_id < 1 else f'WHERE r.genre_flag & (1 << {genre_id}) != 0'
         
         return pd.read_sql_query(f'''WITH all_terms AS
                                 (
@@ -888,12 +896,9 @@ class DB:
                                   FROM [review_sentence] s
                                   INNER JOIN review r
                                   ON s.review_id = r.id
-                                  INNER JOIN imdb_title_genres g
-                                  ON r.title_id = g.title_id
                                   INNER JOIN aspect_words w
                                   ON s.sentence LIKE '% ' || w.term || ' %'
-                                  WHERE g.genre_id = {genre_id}
-                                    AND r.usage IS NULL
+                                  {genre_filter}
                                 ),
                                 sentences AS
                                 (
@@ -902,7 +907,7 @@ class DB:
                                                      PARTITION BY aspect_id, polarity
                                                      ORDER BY id ASC) AS TermNum
                                           FROM all_terms)
-                                    WHERE TermNum < 42
+                                    WHERE TermNum < {aspect_limit}
                                 )
                                 SELECT s.id, s.sentence as text, r.rating
                                 FROM sentences
@@ -1076,38 +1081,58 @@ class DB:
                                  ''', self.connection())
   
   
-    def reset_predictions(self):
+    def reset_predictions(self, genre_id = None):
         """ remove non-gold aspects for sentences """
-    
-        #TODO: reset per genre
     
         with closing(self.connection()) as conn:
             with closing(conn.cursor()) as cmd:
             
-                cmd.execute('''UPDATE [review_sentence]
-                               SET analyzed = 0
-                            ''')
-            
-                cmd.execute('''DELETE FROM [sentence_aspect]
-                               WHERE verified = 0
-                            ''')
+                if genre_id is None or genre_id < 1:
+                    
+                    cmd.execute('''UPDATE [review_sentence]
+                                   SET analyzed = 0
+                                ''')
+                
+                    cmd.execute('''DELETE FROM [sentence_aspect]
+                                   WHERE verified = 0
+                                ''')
+                
+                else:
+                
+                    cmd.execute(f'''UPDATE [review_sentence]
+                                   SET analyzed = 0
+                                   FROM (SELECT r.id FROM review r WHERE r.genre_flag & (1 << {genre_id}) != 0) AS reviews
+                                   WHERE review_sentence.review_id = reviews.id
+                                ''')
+                
+                    cmd.execute(f'''DELETE FROM [sentence_aspect]
+                                   WHERE verified = 0
+                                   AND sentence_id IN (SELECT review_sentence.id
+                                                     FROM [review]
+                                                     INNER JOIN review_sentence
+                                                     ON review.id = review_sentence.review_id
+                                                     WHERE genre_flag & (1 << {genre_id}) != 0)
+                                ''')
                 
                 conn.commit()
                              
   
-    def get_sentences_for_prediction(self, genre_id, chunk_size):
+    def get_sentences_for_prediction(self, genre_id = None, chunk_size = None):
         """ get sentences for reviews of titles (belonging to a given genre)
           , that have not been analyzed yet
         """
         
-        filter_genre = f'AND r.genre_flag & (1 << {genre_id}) != 0'
+        if chunk_size is None:
+            chunk_size = 10000
+        
+        genre_filter = '' if genre_id is None or genre_id < 1 else f'AND r.genre_flag & (1 << {genre_id}) != 0'
         
         return pd.read_sql_query(f'''SELECT s.id, s.[sentence] as text
                                       FROM [review_sentence] s
                                       INNER JOIN review r
                                       ON s.review_id = r.id
                                       WHERE analyzed = 0
-                                      {filter_genre if genre_id > 0 else ''}
+                                      {genre_filter}
                                       ORDER BY s.id
                                       LIMIT {chunk_size}
                                  ''', self.connection()) 

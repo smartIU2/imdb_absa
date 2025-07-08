@@ -1,3 +1,4 @@
+import argparse
 import pandas as pd
 
 from setfit.span.aspect_extractor import AspectExtractor
@@ -27,17 +28,19 @@ def spans_to_labels(spans):
 if __name__ == "__main__":
     """ Export sample sentences for annotation in doccano """
 
-    config = Config()    
+    parser = argparse.ArgumentParser()
+    parser.add_argument('--genre_id', type=int, help='filter by genre')
+    parser.add_argument('--aspect_limit', type=int, default=42, help='maximum number of samples per aspect category / polarity combination')
+    filters = parser.parse_args()
+
+    config = Config()
     
     db = DB(config.database)
     db.assure_database()
 
     print('Collecting sample sentences')
 
-    #TODO: make config
-    genre_id = 1 # Action
-
-    sentences = db.get_sample_sentences(genre_id)
+    sentences = db.get_sample_sentences(**vars(filters))
 
 
     print('Getting possible aspects')

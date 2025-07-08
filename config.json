@@ -32,6 +32,7 @@
   "model_setfit": "./models/setfit-imdb-absa-action",
   "model_classifier":"./models/classifier-imdb-absa-action",
   
+  "dash_genre_filter": 1,
   "dash_highlight_with_context": false,
   "dash_highlight_categories": ["Audio", "Action", "Effects", "Scene", "Story", "Direction", "Cast", "Message", "Emotion", "General", "Overall"],
   

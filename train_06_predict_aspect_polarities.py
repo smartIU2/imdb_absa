@@ -1,5 +1,7 @@
+import argparse
 import pandas as pd
 import spacy
+import time
 
 from imdb_absa.config import Config
 from imdb_absa.db import DB
@@ -8,24 +10,25 @@ from imdb_absa.nlp import NLP
 if __name__ == "__main__":
     """ Predict aspect based sentiment polarity and save to sqlite database """
 
+    parser = argparse.ArgumentParser()
+    parser.add_argument('--genre_id', type=int, default=-1, help='filter by genre')
+    parser.add_argument('--chunk_size', type=int, default=7500, help='number of sentences predicted per batch')
+    args = parser.parse_args()
+
     config = Config()    
     
     print('Assuring database')
     db = DB(config.database)
     db.assure_database()
 
-    #TODO: make config
-    genre_id = -1 #All
-    chunk_size = 6000
-
     print('Deleting previous predictions from database')
     
-    db.reset_predictions()
+    db.reset_predictions(args.genre_id)
     
 
     print('Getting sentences')
 
-    sentences = db.get_sentences_for_prediction(genre_id, chunk_size)
+    sentences = db.get_sentences_for_prediction(**vars(args))
     
     if len(sentences.index) == 0:
         print('No sentences to predict.')
@@ -74,6 +77,7 @@ if __name__ == "__main__":
             db.update_sentences_analyzed(sentence_ids)
             
             # get next chunk
-            sentences = db.get_sentences_for_prediction(genre_id, chunk_size)
+            sentences = db.get_sentences_for_prediction(**vars(args))
+            
             
         print('Done.')

@@ -84,16 +84,13 @@ class imdb_absa_dash:
     PRESS_ANALYZE = "Press 'Analyze' to predict sentiments."
     
     
-    def __init__(self, name, highlight_context, highlight_categories, gpu):
+    def __init__(self, name, genre_id, highlight_context, highlight_categories, gpu):
         
         self.highlight_context = highlight_context #determines size of highlights
         self.highlight_categories = highlight_categories #determines which aspects to highlight
         self.gpu = gpu #determines spacy model preference
-        
-        #TODO: make config
-        genre_id = 1 #Action
-        
-        self.titles = db.get_titles_by_genre(genre_id) #filtered movies for selection
+
+        self.titles = db.get_titles_for_selection(genre_id) #movies for dropdown
         self.aspect_terms = db.get_aspect_terms() #aspect terms to determine categories
         self.features = db.get_review_polarities_input() #DataFrame to use for classification
         
@@ -204,6 +201,7 @@ class imdb_absa_dash:
             
             reviews = pd.DataFrame(reviews, columns=['originalText', 'rating'])
             reviews['title_id'] = title_id
+            reviews['usage'] = ''
             
             #save fetched reviews to sqlite database
             db.import_reviews(reviews)
@@ -308,5 +306,5 @@ if __name__ == '__main__':
 
     print('starting server')
     running_on_gpu = config.model_spacy.endswith('trf')
-    app = imdb_absa_dash(__name__, config.dash_highlight_with_context, config.dash_highlight_categories, running_on_gpu)
+    app = imdb_absa_dash(__name__, config.dash_genre_filter, config.dash_highlight_with_context, config.dash_highlight_categories, running_on_gpu)
     app.start_server()

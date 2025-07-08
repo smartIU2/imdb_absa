@@ -41,6 +41,7 @@ class Config:
                self.model_setfit = conf['model_setfit']
                self.model_classifier = conf['model_classifier']
                
+               self.dash_genre_filter = conf['dash_genre_filter']
                self.dash_highlight_with_context = conf['dash_highlight_with_context']
                self.dash_highlight_categories = conf['dash_highlight_categories']
                
